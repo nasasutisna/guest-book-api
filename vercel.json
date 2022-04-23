@@ -13,8 +13,7 @@
       "method": [
         "GET",
         "POST",
-        "PUT",
-        "DELETE"
+        "PUT"
       ]
     }
   ]
