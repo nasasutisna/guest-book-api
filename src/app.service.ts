@@ -50,38 +50,40 @@ export class AppService {
 
   async generatLinkWA(data = [], templateMessage = 'template.txt') {
     try {
-      if (!data?.length) {
-        return new ResponseData(null, 'success');
-      }
+      return new ResponseData(data, 'success');
+      // if (!data?.length) {
+      //   return new ResponseData(null, 'success');
+      // }
 
-      const names = data.map((item) => item?.name);
-      const ids = data.map((item) => item?.id);
-      const noHP = data.map((item) => item?.phone);
-      const linkInvitation = data.map((item) => {
-        const convertLink = `${this.link}${item?.name.split(' ').join('+')}`;
-        return convertLink;
-      });
+      // const names = data.map((item) => item?.name);
+      // const ids = data.map((item) => item?.id);
+      // const noHP = data.map((item) => item?.phone);
+      // const linkInvitation = data.map((item) => {
+      //   const convertLink = `${this.link}${item?.name.split(' ').join('+')}`;
+      //   return convertLink;
+      // });
 
-      const getTemplate = await getFile(templateMessage);
-      const result = [];
-      let index = 0;
-      for (const item of names) {
-        let newTemplate = getTemplate.toString();
-        newTemplate = newTemplate.replace('{{name}}', item);
-        newTemplate = newTemplate.replace('{{link}}', linkInvitation[index]);
-        const linkWA = `${this.apiWA}${noHP[index]}&text=${encodeURIComponent(newTemplate)}`;
-        result.push({
-          id: ids[index],
-          name: item,
-          phone: noHP[index],
-          linkWA,
-          content: encodeURIComponent(newTemplate)
-        });
-        index++;
-      }
+      // const getTemplate = await getFile(templateMessage);
+      // const result = [];
+      // let index = 0;
+      // for (const item of names) {
+      //   let newTemplate = getTemplate.toString();
+      //   newTemplate = newTemplate.replace('{{name}}', item);
+      //   newTemplate = newTemplate.replace('{{link}}', linkInvitation[index]);
+      //   const linkWA = `${this.apiWA}${noHP[index]}&text=${encodeURIComponent(newTemplate)}`;
+      //   result.push({
+      //     id: ids[index],
+      //     name: item,
+      //     phone: noHP[index],
+      //     linkWA,
+      //     content: encodeURIComponent(newTemplate)
+      //   });
+      //   index++;
+      // }
 
-      return new ResponseData(result, 'success');
+      // return new ResponseData(result, 'success');
     } catch (error) {
+      throw new Error(error)
       console.log(error);
     }
   }
