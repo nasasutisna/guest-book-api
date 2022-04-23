@@ -62,7 +62,8 @@ export class AppService {
         return convertLink;
       });
 
-      const getTemplate = await getFile(templateMessage);
+      console.log(__dirname + '/' + templateMessage);
+      const getTemplate = await getFile(__dirname + '/' + templateMessage);
       const result = [];
       let index = 0;
       for (const item of names) {
