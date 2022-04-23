@@ -7,8 +7,8 @@ export class AppService {
   private readonly link = 'https://jadinikah.ink/windanasa/?to=';
   private readonly apiWA = 'https://api.whatsapp.com/send?phone=';
 
-  getHello(): string {
-    return 'Hello World!';
+  getHello() {
+    return new ResponseData('hello word', 'success');
   }
 
   async generateLink(path = 'list-nama.txt', templateMessage = 'template.txt') {
