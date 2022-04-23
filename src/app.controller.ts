@@ -10,6 +10,11 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Get('/hello')
+  getHello2(): any {
+    return this.appService.getHello2();
+  }
+
   @Post('/generate')
   generateLink(@Body() body: any): any {
     console.log(body);

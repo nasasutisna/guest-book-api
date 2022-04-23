@@ -11,6 +11,10 @@ export class AppService {
     return new ResponseData('hello word', 'success');
   }
 
+  getHello2() {
+    return new ResponseData('hello word 2', 'success');
+  }
+
   async generateLink(path = 'list-nama.txt', templateMessage = 'template.txt') {
     try {
       const getPath = await getFile(path);
